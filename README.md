@@ -136,6 +136,26 @@ SuVideo/
 └── gradle.properties             # Gradle 属性
 ```
 
+
+
+## 演示截图
+
+| 页面 | 预览 |
+|------|------|
+| **首页** — 视频推荐列表 | <img src="screenshots/home.png" alt="首页" width="200"/> |
+| **发现** — 分类与话题 | <img src="screenshots/find.png" alt="发现" width="200"/> |
+| **广场** — Banner 轮播与图文 | <img src="screenshots/plaza.png" alt="广场" width="200"/> |
+| **视频播放** — 播放器与评论 | <img src="screenshots/player.png" alt="播放" width="200"/> |
+| **个人中心** — 用户信息与设置 | <img src="screenshots/user.png" alt="个人中心" width="200"/> |
+
+## 演示视频
+
+| 状态 | 视频 |
+|------|------|
+| **未登录** — 浏览首页、播放视频、查看评论 | <video src="screenshots/noLogin.mp4" width="250" controls></video> |
+| **已登录** — 完整功能操作演示 | <video src="screenshots/login.mp4" width="250" controls></video> |
+
 ## 许可证
 
 本项目基于 [MIT License](LICENSE) 开源。
+
