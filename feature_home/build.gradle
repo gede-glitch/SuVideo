@@ -1,0 +1,22 @@
+apply from: "../featureConfig.build.gradle"
+
+android {
+    namespace 'com.su.feature.home'
+
+    defaultConfig {
+        if (rootProject.ext.isModule) {
+            applicationId "com.su.feature.home"
+        }
+    }
+}
+
+dependencies {
+    implementation project(":library_base")
+    implementation project(":data_video")
+    implementation project(":mediaplayer")
+
+    annotationProcessor libs.arouterCompiler
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+}

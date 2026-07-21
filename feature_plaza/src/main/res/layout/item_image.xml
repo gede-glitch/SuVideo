@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.su.feature.plaza.bean.ResPlaza.PlazaDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            imageUrl="@{data.cover}"
+            android:layout_width="173dp"
+            android:layout_height="173dp"
+            android:scaleType="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/plaza_image" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:text="@{data.title}"
+            android:textColor="#ff444444"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/iv_cover"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cover"
+            tools:text="埋头吃饭的狸花" />
+
+        <ImageView
+            android:id="@+id/iv_avator"
+            imageAvatar="@{data.avatar}"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="15.5dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{data.author}"
+            android:textColor="#ffbbbbbb"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_avator"
+            app:layout_constraintStart_toEndOf="@id/iv_avator"
+            app:layout_constraintTop_toTopOf="@+id/iv_avator"
+            tools:text="山上娃娃" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

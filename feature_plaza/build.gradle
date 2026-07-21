@@ -1,0 +1,25 @@
+apply from: "../featureConfig.build.gradle"
+
+android {
+    namespace 'com.su.feature.plaza'
+
+    defaultConfig {
+        if (rootProject.ext.isModule) {
+            applicationId "com.su.feature.plaza"
+        }
+    }
+}
+
+dependencies {
+    implementation project(":library_base")
+    implementation project(":data_video")
+    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.2.6'
+    implementation libs.activity.ktx
+    implementation libs.appcompat
+    implementation libs.constraintlayout
+    implementation libs.material
+    annotationProcessor libs.arouterCompiler
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+}

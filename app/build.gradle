@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.su.video'
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.su.video"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            optimization {
+                enable false
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    dataBinding {
+        enable true
+    }
+}
+
+dependencies {
+    annotationProcessor libs.arouterCompiler
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+    if (rootProject.ext.isModule) {
+        implementation project(":library_base")
+    } else {
+        implementation project(":library_base")
+        implementation project(":feature_find")
+        implementation project(":feature_home")
+        implementation project(":feature_plaza")
+        implementation project(":feature_user")
+        implementation project(":mediaplayer")
+    }
+}

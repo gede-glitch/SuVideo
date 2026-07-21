@@ -1,0 +1,53 @@
+plugins {
+    alias(libs.plugins.android.library)
+}
+
+android {
+    namespace 'com.su.library.base'
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    dataBinding {
+        enable true
+    }
+}
+
+dependencies {
+    api libs.appcompat
+    api libs.material
+    api libs.activity.ktx
+    api libs.constraintlayout
+    api libs.arouter
+    api libs.liveData
+    api libs.viewModel
+    api libs.androidAutoSize
+    api libs.glide
+    api libs.refreshlayout
+    api libs.headerradar
+    api libs.footerball
+    api libs.loadsir
+    api libs.classicsfooter
+    api libs.security
+    api libs.eventBus
+
+    api project(":network")     // 引用网络库
+
+    annotationProcessor libs.arouterCompiler
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+}

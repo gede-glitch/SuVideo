@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="introduceViewModel"
+            type="com.su.feature.mediaplayer.ui.videodetail.VideoDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="24dp"
+                android:text="@{introduceViewModel.videoInfo.title}"
+                android:textColor="#ffffffff"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="孤独与自由，在世界尽头思考人生" />
+
+            <TextView
+                android:id="@+id/tv_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="16dp"
+                android:text="@{introduceViewModel.channel}"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:text="#旅行 #开眼精迭" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="15dp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="4"
+                android:text="@{introduceViewModel.videoInfo.description}"
+                android:textColor="#ffffffff"
+                android:textSize="13sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_channel"
+                tools:text="你能在黑暗中找到光明吗?这是一篇非常个人化的旅行短片，使用 Sony FX3相机拍摄于冰岛，包含创作者独自旅行时的一些想法，在冰岛夜间的孤独与思考。影片通过镜头展现了冰岛独特的自然景观以及旅途中与自己内心的对话，探讨孤独与" />
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:drawableStart="@drawable/icon_likes"
+                android:onClick="@{()->introduceViewModel.onLikeClick()}"
+                android:src="@{introduceViewModel.isLikes?@drawable/icon_yet_likes:@drawable/icon_likes}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <TextView
+                android:id="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@{introduceViewModel.videoInfo.strLikes}"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_like"
+                app:layout_constraintStart_toStartOf="@id/iv_like"
+                app:layout_constraintTop_toBottomOf="@id/iv_like"
+                tools:text="210" />
+
+            <ImageView
+                android:id="@+id/iv_collection"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="77.5dp"
+                android:layout_marginTop="24dp"
+                android:onClick="@{()->introduceViewModel.onCollectionClick()}"
+                android:src="@{introduceViewModel.isCollection?@drawable/icon_yet_collect:@drawable/icon_collect}"
+                app:layout_constraintStart_toEndOf="@+id/iv_like"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <TextView
+                android:id="@+id/tv_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@{introduceViewModel.videoInfo.strCollection}"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_collection"
+                app:layout_constraintStart_toStartOf="@id/iv_collection"
+                app:layout_constraintTop_toBottomOf="@id/iv_collection"
+                tools:text="收藏" />
+
+            <ImageView
+                android:id="@+id/iv_comments"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="77dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/icon_chat"
+                app:layout_constraintStart_toEndOf="@+id/iv_collection"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@{introduceViewModel.commentCount}"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_comments"
+                app:layout_constraintStart_toStartOf="@id/iv_comments"
+                app:layout_constraintTop_toBottomOf="@id/iv_comments"
+                tools:text="3" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="75.5dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/icon_share"
+                app:layout_constraintStart_toEndOf="@+id/iv_comments"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@{introduceViewModel.videoInfo.strViews}"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_arrow"
+                app:layout_constraintStart_toStartOf="@id/iv_arrow"
+                app:layout_constraintTop_toBottomOf="@id/iv_arrow"
+                tools:text="43" />
+
+            <View
+                android:id="@+id/barrier"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="43dp"
+                android:background="#33ffffff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_arrow" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</layout>

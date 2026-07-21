@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userViewModel"
+            type="com.su.feature.user.ui.user.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/user_background_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_set"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="14dp"
+            android:onClick="@{()->userViewModel.onSettingsClick()}"
+            android:src="@mipmap/icon_set"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_qualifications"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="12dp"
+            android:onClick="@{()->userViewModel.onUserInfoMenuClick()}"
+            android:src="@mipmap/icon_tag"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_set"
+            app:layout_constraintEnd_toStartOf="@+id/iv_set"
+            app:layout_constraintTop_toTopOf="@+id/iv_set" />
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            imageAvatar="@{userViewModel.avatar}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="171dp"
+            android:onClick="@{()->userViewModel.onEditUserInfoClick()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/touxiang" />
+
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:onClick="@{()->userViewModel.onEditUserInfoClick()}"
+            android:text="@{userViewModel.nickName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            tools:text="请先登录" />
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="12.5dp"
+            android:onClick="@{()->userViewModel.onEditUserInfoClick()}"
+            android:src="@mipmap/icon_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nick_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_nick_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_nick_name" />
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()->userViewModel.onEditUserInfoClick()}"
+            android:text="@{userViewModel.bio}"
+            android:textColor="#ff9c9c9c"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_nick_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nick_name"
+            tools:text="用户签名" />
+
+        <TextView
+            android:id="@+id/tv_fans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{userViewModel.fans}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tv_sign"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign"
+            tools:text="0 粉丝" />
+
+        <TextView
+            android:id="@+id/tv_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="16dp"
+            android:text="@{userViewModel.follow}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/tv_fans"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign"
+            tools:text="0 关注" />
+
+        <TextView
+            android:id="@+id/tv_medal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="16dp"
+            android:text="@{userViewModel.medal}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/tv_follow"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign"
+            tools:text="0 奖章" />
+
+        <View
+            android:id="@+id/view_div"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="36dp"
+            android:background="#fff8f8f8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fans" />
+
+        <LinearLayout
+            android:id="@+id/ll_collection"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center|start"
+            android:onClick="@{()->userViewModel.onCollectionClick()}"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_div">
+
+            <ImageView
+                android:id="@+id/iv_collect_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/collect_image" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="我的收藏"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="20dp"
+                android:src="@mipmap/icon_greater_sign" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_div1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#33000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_collection" />
+
+        <LinearLayout
+            android:id="@+id/ll_record"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center|start"
+            android:onClick="@{()->userViewModel.onRecordClick()}"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_div1">
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/record_image" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="观看记录"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="20dp"
+                android:src="@mipmap/icon_greater_sign" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_div2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#33000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_record" />
+
+        <LinearLayout
+            android:id="@+id/ll_exit"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center|start"
+            android:onClick="@{()->userViewModel.onLogoutClick()}"
+            android:orientation="horizontal"
+            android:visibility="@{userViewModel.showLogoutBtn}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_div2">
+
+            <ImageView
+                android:id="@+id/iv_login_out"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/log_out_image" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="退出登录"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="20dp"
+                android:src="@mipmap/icon_greater_sign" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
