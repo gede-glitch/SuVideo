@@ -136,8 +136,6 @@ SuVideo/
 └── gradle.properties             # Gradle 属性
 ```
 
-
-
 ## 演示截图
 
 | 页面 | 预览 |
@@ -150,12 +148,13 @@ SuVideo/
 
 ## 演示视频
 
+点击下方封面图播放演示视频：
+
 | 状态 | 视频 |
 |------|------|
-| **未登录** — 浏览首页、播放视频、查看评论 | <video src="screenshots/noLogin.mp4" width="250" controls></video> |
-| **已登录** — 完整功能操作演示 | <video src="screenshots/login.mp4" width="250" controls></video> |
+| **未登录** — 浏览首页、播放视频、查看评论 | [![未登录演示](screenshots/home.png)](screenshots/noLogin.mp4) |
+| **已登录** — 完整功能操作演示 | [![已登录演示](screenshots/user.png)](screenshots/login.mp4) |
 
 ## 许可证
 
 本项目基于 [MIT License](LICENSE) 开源。
-
